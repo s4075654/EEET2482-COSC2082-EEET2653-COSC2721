@@ -1,0 +1,25 @@
+#include "exercises.hpp"
+#include <vector>
+#include <stdio.h>
+#include <iostream>
+
+class SchoolSystem {
+  friend int main(int argc, char **argv);
+  std::vector<Student> students;
+
+  void addStudent() {
+    Student student_object;
+
+    puts("Input name and student ID for a student:");
+    std::getline(std::cin, student_object.name);
+    scanf("%d", &student_object.studentID);
+    *(students + student_object.studentID) = student_object;
+  }
+  void removeStudent() {
+    int student_ID;
+
+    printf("Input student ID: ");
+    scanf("%d", &student_ID);
+    students.erase(students.begin() + student_ID);
+  }
+};

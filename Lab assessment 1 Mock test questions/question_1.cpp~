@@ -1,0 +1,25 @@
+#include <stdlib.h>
+#include <iostream>
+
+size_t doubleVal(char *an_integer) {
+
+  return(strtoull(an_integer, NULL, 10) * 2);
+}
+
+long double doubleVal(char *a_floating) {
+
+  return(strtold(a_floating, NULL) * 2);
+}
+
+ssize_t doubleVal(char *a_string_represented_a_hexadecimal_number) {
+  
+  return(strtoulll(a_string_represeneted_a_hexadecimal_number, NULL, 16) * 2);
+}
+
+int main(int argc, char **argv) {
+  setbuf(stdout, NULL);
+
+  std::cout << doubleVal(*argv) << std::endl;
+
+  return(0);
+}

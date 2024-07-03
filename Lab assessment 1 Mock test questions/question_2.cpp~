@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+class Student {
+private:
+  long double scores[3];
+  char name[];
+
+  Student() {};
+
+  void inputData() {
+    puts("Input data (name and scores) for the student:");
+    scanf("%s\n%Lf %Lf %Lf", name, *(scores), *(scores + 1), *(scores + 2));
+  }
+  void showInfo() {
+    puts("Print out information of the student:");
+    printf("%s\n%Lf %Lf %Lf\n", name, *(scores), *(scores + 1), *(scores + 2));
+  }
+
+  std::istream operator>>(Student object) {
+
+    return(inputData());
+  }
+  std::ostream operator<<(Student object) {
+
+    return(showInfo());
+  }
+  bool operator>(Student object) {
+
+    return((*scores + *(scores + 1) + *(scores + 2)) / 3 > (*object.scores + *(object.scores + 1) + *(object.scores + 2)) / 3);
+  }
+  Student operator+(int n) {
+
+    for(unsigned char score = 0; score < 3; ++score) {
+      *(scores + score) = *(scores + score) + n;
+    }
+      
+    return(*this);
+  }
+  
+  friend int main(int argc, char **argv);
+};
+
+void c() {
+  Student student_objects[10];
+  FILE *a_file = fopen("data.txt", "r");
+
+  
+  
+  fclose(a_file);
+}
+
+int main(int argc, char **argv) {
+  Student an_object, object;
+  setbuf(stdout, NULL);
+
+  an_object.inputData();
+  an_object.showInfo();
+  cin >> object;
+  cout << object;
+  printf("Return true if average score of object1 is larger than that of object2; return false otherwise: %hhu\n", an_object > object);
+  puts("Return a result object that has the same name, but all scores are increased:");
+  printf("%s\n%Lf %Lf %Lf\n", 'n' + an_object);
+  c();
+
+  return(0);
+}
