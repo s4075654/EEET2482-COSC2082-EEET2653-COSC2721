@@ -3,10 +3,11 @@
 class Facebooker {
   Facebooker *connections_with_their_friends[5000];
   char his[];
-
+  
   friend void view(Facebooker a_given_facebooker);
   friend void view_all_friends(Facebooker a_given_facebooker);
   friend void view_all_mutual_friends_of_two_given_facebookers(Facebooker given_facebooker_one, Facebooker given_facebooker_two);
+  friend int main(int argc, char **argv);
 };
 
 void view(Facebooker a_given_facebooker) {
@@ -39,8 +40,7 @@ void view_all_mutual_friends_of_two_given_facebookers(Facebooker given_facebooke
 }
 
 int main(int argc, char **argv) {
-  Facebooker given_facebooker_one;
-  Facebooker given_facebooker_two;
+  Facebooker given_facebooker_one, given_facebooker_two;
 
   view(given_facebooker_two);
   view_all_friends(given_facebooker_two);

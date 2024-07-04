@@ -6,7 +6,7 @@
 #include <assert.h>
 
 void Student::changePwd() {
-  FILE *existing_password = fopen((name + ".dat").data(), "r");
+  FILE *existing_password = fopen((name.append(".dat")).data(), "r");
 
   if(existing_password != NULL) {
     fseek(existing_password, 0, SEEK_END);

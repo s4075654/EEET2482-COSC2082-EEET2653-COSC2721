@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <vector>
 #include <iostream>
 

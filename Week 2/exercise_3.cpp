@@ -24,7 +24,8 @@ void c() {
 
 void d() {
   size_t a_hexadecimal_value;
-  
+
+  printf("A hexadecimal value: ");
   scanf("%zx", &a_hexadecimal_value);
   printf("Its decimal value: %zu\n", a_hexadecimal_value);
   printf("Hexa form: %#zx", a_hexadecimal_value);
@@ -34,6 +35,7 @@ int main(int argc, char **argv) {
   std::string a_string;
   setbuf(stdout, NULL);
 
+  puts("The console input:");
   std::getline(std::cin, a_string);
   a(a_string.data());
   putchar('\n');
