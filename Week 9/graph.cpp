@@ -39,7 +39,7 @@ void view_all_mutual_friends_of_two_given_facebookers(Facebooker given_facebooke
 void the_following_functionalities() {
   Facebooker given_facebooker_one;
   Facebooker given_facebooker_two;
-
+  
   view(given_facebooker_two);
   view_all_friends(given_facebooker_two);
   view_all_mutual_friends_of_two_given_facebookers(given_facebooker_one, given_facebooker_two);
