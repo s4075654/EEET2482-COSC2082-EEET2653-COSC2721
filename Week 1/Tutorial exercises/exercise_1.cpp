@@ -2,10 +2,10 @@
 
 typedef struct {
   long double a, b;
-} aAndB;
+} AAndB;
 
-aAndB input_coefficient_values_a_and_b_of_a_linear_equation() {
-  aAndB coefficient_values;
+AAndB input_coefficient_values_a_and_b_of_a_linear_equation() {
+  AAndB coefficient_values;
   
   printf("Input coefficient value a: ");
   scanf("%Lf", &coefficient_values.a);
@@ -15,7 +15,7 @@ aAndB input_coefficient_values_a_and_b_of_a_linear_equation() {
   return(coefficient_values);
 }
 
-long double solve_it(aAndB coefficient_values) {
+long double solve_it(AAndB coefficient_values) {
 
   return((0 - coefficient_values.b) / coefficient_values.a);
 }
