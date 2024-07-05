@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string>
-#include <stdlib.h>
+#include <sys/mman.h>
 #include <vector>
 #include <iostream>
 
@@ -46,7 +46,7 @@ void b() {
   printf("Enter a number n: ");
   scanf("%llu", &n);
 
-  Book **an_array_of_n_book_objects = (Book **)malloc(n * sizeof(Book*));
+  Book **an_array_of_n_book_objects = (Book **)mmap(NULL, n * sizeof(Book*), PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 
   puts("Input value for them:");
   for(unsigned long long int book_object = 0; book_object < n; ++book_object) {
@@ -64,7 +64,7 @@ void b() {
     delete *(an_array_of_n_book_objects + book_object);
   }
 
-  free(an_array_of_n_book_objects);
+  munmap(an_array_of_n_book_objects, n * sizeof(Book*));
 }
 
 int main(int argc, char **argv) {

@@ -23,21 +23,22 @@ void b() {
   FILE *a_loop_that_continuously_request_1MB_from_the_heap = fopen("a_loop_that_continuously_request_1MB_from_the_heap.cpp", "w");
 
   fputs("#include <stdio.h>\n", a_loop_that_continuously_request_1MB_from_the_heap);
-  fputs("#include <stdlib.h>\n", a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("#include <sys/mman.h>\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputc('\n', a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("unsigned long long int a_loop_that_continuously_request_1MB_from_the_heap() {\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("  unsigned long long int how_much_memory_has_been_allocated = 0;\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputc('\n',  a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("  while(1) {\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("    try {\n", a_loop_that_continuously_request_1MB_from_the_heap);
-  fputs("      char *an_array_of_char = (char *)malloc(1024 * 1024 * sizeof(char));\n", a_loop_that_continuously_request_1MB_from_the_heap);
-  fputs("      if(an_array_of_char == NULL) {\n", a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("      char *an_array_of_char = (char *)mmap(NULL, 1024 * 1024 * sizeof(char), PROT_READ, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);\n", a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("      if(an_array_of_char == MAP_FAILED) {\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputc('\n', a_loop_that_continuously_request_1MB_from_the_heap);
-  fputs("	throw(\"the exception to stop the loop if allocation fails\");\n", a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("	throw(an_array_of_char);\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("      }\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("    }\n", a_loop_that_continuously_request_1MB_from_the_heap);
-  fputs("    catch(const char *the_exception_to_stop_the_loop_if_allocation_fails) {\n", a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("    catch(char *the_exception_to_stop_the_loop_if_allocation_fails) {\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputc('\n', a_loop_that_continuously_request_1MB_from_the_heap);
+  fputs("      munmap(the_exception_to_stop_the_loop_if_allocation_fails, 1024 * 1024 * sizeof(char));\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("      return(how_much_memory_has_been_allocated);\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("    }\n", a_loop_that_continuously_request_1MB_from_the_heap);
   fputs("    how_much_memory_has_been_allocated += 1024 * 1024;\n", a_loop_that_continuously_request_1MB_from_the_heap);
