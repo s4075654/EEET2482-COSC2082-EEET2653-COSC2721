@@ -2,5 +2,6 @@
 *.cpp~
 *.hpp~
 #*#
+.#*
 *.dat
 a_loop_that_continuously_request_1MB_from_the_heap.cpp

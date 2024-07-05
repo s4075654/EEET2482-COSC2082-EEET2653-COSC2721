@@ -6,7 +6,7 @@
 
 class Book {
 private:
-  ssize_t price;
+  ptrdiff_t price;
   std::string *name;
   
   Book() {
@@ -33,7 +33,7 @@ void a() {
   }
   puts("All information of the objects:");
   for(Book *object : three_book_objects) {
-    printf("%zd %s", (*object).price, (*(*object).name).data());
+    printf("%td %s", (*object).price, (*(*object).name).data());
     putchar('\n');
     
     delete(object);
@@ -51,7 +51,7 @@ void b() {
   puts("Input value for them:");
   for(unsigned long long int book_object = 0; book_object < n; ++book_object) {
     *(an_array_of_n_book_objects + book_object) = new Book();
-    scanf("%zd", &((*(*(an_array_of_n_book_objects + book_object))).price));
+    scanf("%td", &((*(*(an_array_of_n_book_objects + book_object))).price));
     if((*(*(an_array_of_n_book_objects + book_object))).price > (*(*(an_array_of_n_book_objects + the_most_expensive_book))).price) {
       the_most_expensive_book = book_object;
     }

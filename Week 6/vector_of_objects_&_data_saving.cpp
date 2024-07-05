@@ -2,7 +2,6 @@
 #include <vector>
 #include <stdio.h>
 #include <iostream>
-#include <wchar.h>
 
 class SchoolSystem {
   friend int main(int argc, char **argv);
@@ -32,7 +31,6 @@ int main(int argc, char **argv) {
   fread(all_information_of_students.students.data(), sizeof(Student), sizeof(all_information_of_students.students) / sizeof(Student), a_file_namely_students);
   
   setbuf(stdout, NULL);
-  setlocale(LC_ALL, "en_US.UTF-8");
 
   all_information_of_students.addStudent();
   all_information_of_students.removeStudent();
@@ -41,7 +39,7 @@ int main(int argc, char **argv) {
   puts("2. Add Student");
   puts("3. Remove Student");
   puts("4. Exit");
-  wprintf(L"Enter Your Choice:\u2026\u2026\u2026\n");
+  printf("Enter Your Choice:………\n");
   fwrite(all_information_of_students.students.data(), sizeof(Student), sizeof(all_information_of_students.students) / sizeof(Student), a_file_namely_students);
 
   fclose(a_file_namely_students);

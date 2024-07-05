@@ -3,9 +3,16 @@
 #include <string.h>
 
 class Broker {
-  char *name;
-  long double buyPrice;
+  char name[7];
+  unsigned short int buyPrice;
   Broker *nextBuyer;
+
+public:
+  Broker(const char *broker, unsigned short int price) {
+    strncpy(name, broker, 7);
+    buyPrice = price;
+    nextBuyer = NULL;
+  }
 
   friend void a_function_to_print_out_all_transactions_exactly_as_above(Broker *transactions);
   friend void a_function_to_print_out_information_of_the_broker_with_the_lowest_profit_excluding_the_last_broker_who_has_not_sold_the_house(Broker *transactions);
@@ -16,11 +23,10 @@ void a_function_to_print_out_all_transactions_exactly_as_above(Broker *transacti
   setbuf(stdout, NULL);
 
   puts("Print out all transactions exactly as above:");
-  printf("•%s: bought the house for $%hu\n", (*transactions).name, (*transactions).buyPrice);
-  transactions = (*transactions).nextBuyer;
-  while(transactions != NULL) {
+  printf("•\t%s: bought the house for $%hu\n", (*transactions).name, (*transactions).buyPrice);
+  while((*transactions).nextBuyer != NULL) {
+    printf("•\t%s --> %s\t: price = $%hu\n", (*transactions).name, (*(*transactions).nextBuyer).name, (*(*transactions).nextBuyer).buyPrice);
     transactions = (*transactions).nextBuyer;
-    printf("•%s --> %s: price = $%hu\n", (*transactions).name, (*(*transactions).nextBuyer).name, (*transactions).buyPrice);
   }
 }
 
@@ -43,27 +49,21 @@ void a_function_to_print_out_information_of_the_broker_with_the_lowest_profit_ex
 void use_linked_list_concepts_to_record_real_estate_transactions() {
   std::list<Broker> real_estate_transactions;
   std::list<Broker>::iterator real_estate_transaction = real_estate_transactions.begin();
+
+  real_estate_transactions.emplace_back("David", 800);  
+  real_estate_transactions.emplace_back("John", 1000);
+  real_estate_transactions.emplace_back("Peter", 1200);
+  real_estate_transactions.emplace_back("Luna", 1800);
+  real_estate_transactions.emplace_back("Sophia", 3500);
   
-  strcpy((*real_estate_transaction).name, "David");
-  (*real_estate_transaction).buyPrice = 800;
-  (*real_estate_transaction).nextBuyer = &(*std::next(real_estate_transaction));
-  std::advance(real_estate_transaction, 1);
-  strcpy((*real_estate_transaction).name, "John");
-  (*real_estate_transaction).buyPrice = 1000;
-  (*real_estate_transaction).nextBuyer = &(*std::next(real_estate_transaction));
-  std::advance(real_estate_transaction, 1);
-  strcpy((*real_estate_transaction).name, "Peter");
-  (*real_estate_transaction).buyPrice = 1200;
-  (*real_estate_transaction).nextBuyer = &(*std::next(real_estate_transaction));
-  std::advance(real_estate_transaction, 1);
-  strcpy((*real_estate_transaction).name, "Luna");
-  (*real_estate_transaction).buyPrice = 1800;
-  (*real_estate_transaction).nextBuyer = &(*std::next(real_estate_transaction));
-  std::advance(real_estate_transaction, 1);
-  strcpy((*real_estate_transaction).name, "Sophia");
-  (*real_estate_transaction).buyPrice = 3500;
-  a_function_to_print_out_all_transactions_exactly_as_above(&(*real_estate_transactions.begin()));
-  a_function_to_print_out_information_of_the_broker_with_the_lowest_profit_excluding_the_last_broker_who_has_not_sold_the_house(&(*real_estate_transactions.begin()));
+  std::list<Broker>::iterator transaction = real_estate_transactions.begin();
+
+  for(unsigned char buyer = 1; buyer <= 4; ++buyer) {
+    (*transaction).nextBuyer = &*std::next(transaction);
+    ++transaction;
+  }
+  a_function_to_print_out_all_transactions_exactly_as_above(&real_estate_transactions.front());
+  a_function_to_print_out_information_of_the_broker_with_the_lowest_profit_excluding_the_last_broker_who_has_not_sold_the_house(&real_estate_transactions.front());
 }
 
 int main(int argc, char **argv) {

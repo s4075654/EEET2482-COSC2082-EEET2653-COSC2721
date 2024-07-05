@@ -3,10 +3,10 @@
 
 Student::Student() {
   name = "public";
-  score = (ssize_t)"public";
+  score = (ptrdiff_t)"public";
 }
 
-ssize_t Student::get_score() {
+ptrdiff_t Student::get_score() {
 
   return(score);
 }
@@ -15,7 +15,7 @@ void b() {
   Student student_object_one, student_object_two;
   
   puts("All information of the two students: ");
-  printf("%s, %zh, %s, %zh", student_object_one.name.data(), student_object_one.get_score(), student_object_two.name.data(), student_object_two.get_score());
+  printf("%s, %td, %s, %td", student_object_one.name.data(), student_object_one.get_score(), student_object_two.name.data(), student_object_two.get_score());
 }
 
 void c() {
@@ -29,5 +29,5 @@ void c() {
     }
   }
   puts("Information of the student with highest score:");
-  printf("%s %zh", (*(an_array_of_three_students + the_student_with_the_highest_score)).name.data(), (*(an_array_of_three_students + the_student_with_the_highest_score)).get_score());
+  printf("%s %td", (*(an_array_of_three_students + the_student_with_the_highest_score)).name.data(), (*(an_array_of_three_students + the_student_with_the_highest_score)).get_score());
 }
