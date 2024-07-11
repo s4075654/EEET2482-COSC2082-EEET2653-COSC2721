@@ -17,7 +17,7 @@ unsigned char check_if_it_is_valid_hexadecimal_number_or_not(char *it) {
     return(0);
   }
   while(*hexadecimal_digit != '\0') {
-    if(*(it + 2) < '0' || *(it + 2) > '9' && *(it + 2) < 'A' || *(it + 2) > 'F' && *(it + 2) < 'a' || *(it + 2) > 'f') {
+    if(*hexadecimal_digit < '0' || *hexadecimal_digit > '9' && *hexadecimal_digit < 'A' || *hexadecimal_digit > 'F' && *hexadecimal_digit < 'a' || *hexadecimal_digit > 'f') {
 
       return(0);
     }
