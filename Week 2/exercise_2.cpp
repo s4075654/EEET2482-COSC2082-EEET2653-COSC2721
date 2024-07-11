@@ -40,8 +40,8 @@ void displays_the_hexadecimal_number_to_the_console(char *user_input_argument, u
 
 int main(int argc, char **argv) {
   setbuf(stdout, NULL);
-  assert(argc == 2);
   
+  assert(argc == 2);
   displays_the_hexadecimal_number_to_the_console(*(argv + 1), check_if_it_is_valid_hexadecimal_number_or_not(*(argv + 1)));
 
   return(0);
