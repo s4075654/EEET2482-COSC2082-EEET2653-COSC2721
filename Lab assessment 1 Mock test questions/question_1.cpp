@@ -12,9 +12,8 @@ long double doubleVal(char *a_floating) {
 }
 
 int main(int argc, char **argv) {
-  setbuf(stdout, NULL);
 
-  if(*(*(argv + 1)) == '0' && *(*(argv + 1) + 1) == 'x') {
+  if(setbuf(stdout, NULL), *(*(argv + 1)) == '0' && *(*(argv + 1) + 1) == 'x') {
     printf("0x%X\n", doubleVal(*(argv + 1), 16));
 
     return(0);

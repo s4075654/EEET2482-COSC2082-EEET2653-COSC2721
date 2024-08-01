@@ -13,9 +13,8 @@ void print_out_the_maximum_value_and_their_average(ptrdiff_t *an_array_of_5_inte
   long double their_average = 0.0;
 
   for(unsigned char value = 1; value <= 5; ++value) {
-    if(*(an_array_of_5_integers + value - 1) > the_maximum_value) {
-      the_maximum_value = *(an_array_of_5_integers + value - 1);
-    }
+    the_maximum_value = (*(an_array_of_5_integers + value - 1) > the_maximum_value) ?
+      the_maximum_value = *(an_array_of_5_integers + value - 1) : the_maximum_value;
     their_average += *(an_array_of_5_integers + value - 1);
   }
   printf("The maximum value: %td\n", the_maximum_value);

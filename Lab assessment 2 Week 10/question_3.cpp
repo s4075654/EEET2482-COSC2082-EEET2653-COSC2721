@@ -30,8 +30,8 @@ class CustomerAccount {
       ++(*orders).order_id;
       the_total_expense += (*orders).the_total_expense;
     }
-    if(discount == gold_membership_account) {
-      
+    if (discount == gold_membership_account) {
+
       return(the_total_expense * 95 / 100);
     }
 

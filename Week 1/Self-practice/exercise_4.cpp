@@ -9,12 +9,8 @@ ptrdiff_t reverse_the_digits_of_a_given_integer(ptrdiff_t a_given_integer) {
     regetni_nevig_a_fo_stigid_eht += the_digits_of_a_given_integer % 10;
     the_digits_of_a_given_integer /= 10;
   }
-  if(a_given_integer < 0) {
-    a_given_integer = -regetni_nevig_a_fo_stigid_eht;
-  }
-  else {
-    a_given_integer = regetni_nevig_a_fo_stigid_eht;
-  }
+  (a_given_integer < 0) ?
+    a_given_integer = -regetni_nevig_a_fo_stigid_eht : a_given_integer = regetni_nevig_a_fo_stigid_eht;
 
   return(a_given_integer);
 }
