@@ -1,0 +1,3 @@
+[submodule "gr-asm-c"]
+	path = gr-asm-c
+	url = https://github.com/gr-c-dai-dai/gr-asm-c.git
