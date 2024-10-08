@@ -1,7 +1,7 @@
 registries:
-  gr-asm-c:
+  github-octocat:
     type: git
-    url: https://github.com/gr-c-dai-dai/gr-asm-c.git
+    url: https://github.com
     username: x-access-token
     password: ${{secrets.MY_GITHUB_PERSONAL_TOKEN}}
     
@@ -16,10 +16,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    registries:
+      - github-octocat
 
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: "daily"
     registries:
-      - gr-asm-c
+      - github-octocat
