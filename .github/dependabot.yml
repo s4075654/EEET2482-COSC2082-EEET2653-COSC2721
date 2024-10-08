@@ -1,7 +1,7 @@
 registries:
-  github-octocat:
+  gr-asm-c:
     type: git
-    url: https://github.com
+    url: https://github.com/gr-c-dai-dai/gr-asm-c.git
     username: x-access-token
     password: ${{secrets.MY_GITHUB_PERSONAL_TOKEN}}
     
