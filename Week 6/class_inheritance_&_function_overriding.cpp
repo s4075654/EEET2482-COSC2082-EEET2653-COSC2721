@@ -7,41 +7,26 @@ class Staff {
   int staffID;
   std::string name;
 
-  Staff() {
-    puts("themselves");
-  }
-  ~Staff() {
-    puts("themselves");
-  }
+  Staff() { puts("themselves"); }
+  ~Staff() { puts("themselves"); }
 
-  const char *toString() {
-
-    return((std::to_string(staffID) + name).data());
-  }
+  const char *toString() { return ((std::to_string(staffID) + name).data()); }
   friend void showInfoStaff(Staff &staff);
   friend int main(int argc, char **argv);
 };
 
 class Tutor : Student, Staff {
-  Tutor() {
-    puts("themselves");
-  }
-  ~Tutor() {
-    puts("themselves");
-  }
+  Tutor() { puts("themselves"); }
+  ~Tutor() { puts("themselves"); }
 
-  void consultation() {
-
-    puts("a message, e.g. ");
-  }
+  void consultation() { puts("a message, e.g. "); }
   friend Tutor a();
-  void setName(const char *a_string) {
-
-    Staff::name.assign(a_string);
-  }
+  void setName(const char *a_string) { Staff::name.assign(a_string); }
   const char *toString() {
 
-    return((std::to_string(studentID) + Student::name + std::to_string(staffID) + Staff::name).data());
+    return ((std::to_string(studentID) + Student::name +
+             std::to_string(staffID) + Staff::name)
+                .data());
   }
   friend void showInfoStudent(Student &stu);
   friend void showInfoStaff(Staff &staff);
@@ -51,7 +36,7 @@ class Tutor : Student, Staff {
 Tutor a() {
   Tutor a_tutor_object;
 
-  return(a_tutor_object);
+  return (a_tutor_object);
 }
 
 void showInfoStudent(Student &stu) {
@@ -82,5 +67,5 @@ int main(int argc, char **argv) {
   showInfoStaff(a_staff);
   showInfoStaff(a_tutor_object);
 
-  return(0);
+  return (0);
 }

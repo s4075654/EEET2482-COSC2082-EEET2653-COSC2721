@@ -1,7 +1,7 @@
 #include "exercises.hpp"
-#include <vector>
-#include <stdio.h>
 #include <iostream>
+#include <stdio.h>
+#include <vector>
 
 class SchoolSystem {
   friend int main(int argc, char **argv);
@@ -13,7 +13,8 @@ class SchoolSystem {
     puts("Input name and student ID for a student:");
     std::getline(std::cin, student_object.name);
     scanf("%d", &student_object.studentID);
-    students.emplace(students.begin() + student_object.studentID, student_object);
+    students.emplace(students.begin() + student_object.studentID,
+                     student_object);
   }
   void removeStudent() {
     int student_ID;
@@ -27,9 +28,11 @@ class SchoolSystem {
 int main(int argc, char **argv) {
   SchoolSystem all_information_of_students;
   FILE *a_file_namely_students = fopen("students.dat", "w+");
-  
-  fread(all_information_of_students.students.data(), sizeof(Student), sizeof(all_information_of_students.students) / sizeof(Student), a_file_namely_students);
-  
+
+  fread(all_information_of_students.students.data(), sizeof(Student),
+        sizeof(all_information_of_students.students) / sizeof(Student),
+        a_file_namely_students);
+
   setbuf(stdout, NULL);
 
   all_information_of_students.addStudent();
@@ -40,8 +43,10 @@ int main(int argc, char **argv) {
   puts("3. Remove Student");
   puts("4. Exit");
   printf("Enter Your Choice:………\n");
-  fwrite(all_information_of_students.students.data(), sizeof(Student), sizeof(all_information_of_students.students) / sizeof(Student), a_file_namely_students);
+  fwrite(all_information_of_students.students.data(), sizeof(Student),
+         sizeof(all_information_of_students.students) / sizeof(Student),
+         a_file_namely_students);
 
   fclose(a_file_namely_students);
-  return(main(argc, argv));
+  return (main(argc, argv));
 }

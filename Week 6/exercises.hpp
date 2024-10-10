@@ -10,6 +10,7 @@ class Student {
   std::string name;
 
   Student();
+
 public:
   ~Student();
 

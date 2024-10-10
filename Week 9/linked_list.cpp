@@ -7,36 +7,41 @@ class Node {
   Node *next;
   Node *prev;
 
-  Node(int value) {
-    (*this).value = value;
-  }
+  Node(int value) { (*this).value = value; }
 
-  friend void print_out_values_of_connected_nodes_in_forward(std::list<Node> connected_nodes);
+  friend void print_out_values_of_connected_nodes_in_forward(
+      std::list<Node> connected_nodes);
   friend void backward_order(std::list<Node> connected_nodes);
   friend void a();
-  friend void insertNode(Node *&head, Node *&tail, Node *priorNode, Node *newNode);
+  friend void insertNode(Node *&head, Node *&tail, Node *priorNode,
+                         Node *newNode);
   friend void deleteNode(Node *&head, Node *&tail, Node *delNote);
   friend void b();
   friend void c();
-  friend void a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(std::list<Node> &elements_of_the_linked_list);
+  friend void
+  a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(
+      std::list<Node> &elements_of_the_linked_list);
   friend void d();
 };
 
-void print_out_values_of_connected_nodes_in_forward(std::list<Node> connected_nodes) {
-  for(std::list<Node>::iterator node = connected_nodes.begin(); node != connected_nodes.end(); ++node) {
+void print_out_values_of_connected_nodes_in_forward(
+    std::list<Node> connected_nodes) {
+  for (std::list<Node>::iterator node = connected_nodes.begin();
+       node != connected_nodes.end(); ++node) {
     printf("%d ", (*node).value);
   }
 }
 
 void backward_order(std::list<Node> connected_nodes) {
-  for(std::list<Node>::reverse_iterator node = connected_nodes.rbegin(); node != connected_nodes.rend(); ++node) {
+  for (std::list<Node>::reverse_iterator node = connected_nodes.rbegin();
+       node != connected_nodes.rend(); ++node) {
     printf("%d ", (*node).value);
   }
 }
 
 void a() {
   std::list<Node> a_doubly_linked_list;
-  
+
   a_doubly_linked_list.push_back(Node(8));
   a_doubly_linked_list.push_back(Node(5));
   a_doubly_linked_list.push_back(Node(3));
@@ -54,13 +59,13 @@ void a() {
 
 void insertNode(Node *&head, Node *&tail, Node *priorNode, Node *newNode) {
 
-  if(priorNode == NULL) {
+  if (priorNode == NULL) {
     (*newNode).next = head;
     head = newNode;
   } else {
     (*newNode).prev = priorNode;
     (*priorNode).next = newNode;
-    if(priorNode == tail) {
+    if (priorNode == tail) {
       tail = newNode;
     }
   }
@@ -69,8 +74,9 @@ void insertNode(Node *&head, Node *&tail, Node *priorNode, Node *newNode) {
 void deleteNode(Node *&head, Node *&tail, Node *delNote) {
   Node *a_node = head;
 
-  while(a_node != NULL) {
-    if((*a_node).value == (*delNote).value) {};
+  while (a_node != NULL) {
+    if ((*a_node).value == (*delNote).value) {
+    };
     a_node = (*a_node).next;
   }
 }
@@ -87,14 +93,14 @@ void b() {
   the_list.push_back(Node(3));
   the_list.push_back(Node(6));
   the_list.push_back(Node(5));
-  
+
   Node *the_head = &the_list.front();
   Node *the_tail = &the_list.back();
 
   insertNode(the_head, the_tail, NULL, &a_new_node_with_value_100);
   the_head = &the_list.front();
   the_tail = &the_list.back();
-  
+
   Node *priorNode = &(*(std::next(the_list.begin(), 3)));
 
   insertNode(the_head, the_tail, priorNode, &another_one_with_value_200);
@@ -124,24 +130,28 @@ void c() {
   putchar('\n');
 }
 
-void a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(std::list<Node> &elements_of_the_linked_list) {
+void a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(
+    std::list<Node> &elements_of_the_linked_list) {
   unsigned char sort;
 
   do {
     sort = 0;
-    for(std::list<Node>::iterator element = elements_of_the_linked_list.begin(); element != elements_of_the_linked_list.end(); ++element) {
-      if((*std::next(element)).value > (*element).value) {
-	std::swap((*element).value, (*std::next(element)).value);
-	sort = true;
+    for (std::list<Node>::iterator element =
+             elements_of_the_linked_list.begin();
+         element != elements_of_the_linked_list.end(); ++element) {
+      if ((*std::next(element)).value > (*element).value) {
+        std::swap((*element).value, (*std::next(element)).value);
+        sort = true;
       }
     }
-  } while(sort);
+  } while (sort);
 }
 
 void d() {
   std::list<Node> the_linked_list;
 
-  a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(the_linked_list);
+  a_function_to_sort_elements_of_the_linked_list_in_ascending_order_using_bubble_sort(
+      the_linked_list);
   print_out_values_of_connected_nodes_in_forward(the_linked_list);
   putchar('\n');
 }
@@ -153,5 +163,5 @@ int main(int argc, char **argv) {
   c();
   d();
 
-  return(0);
+  return (0);
 }

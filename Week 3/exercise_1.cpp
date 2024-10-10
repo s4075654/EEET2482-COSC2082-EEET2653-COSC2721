@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <iostream>
+#include <stdio.h>
 #include <string>
 
 void a() {
   std::string a_string;
-  FILE* a_file = fopen("pwd.dat", "w");
+  FILE *a_file = fopen("pwd.dat", "w");
 
   puts("Input a password:");
   std::getline(std::cin, a_string);
@@ -14,11 +14,11 @@ void a() {
 }
 
 void b() {
-  FILE* the_file = fopen("pwd.dat", "r");
+  FILE *the_file = fopen("pwd.dat", "r");
   char stored_password;
 
   puts("Print:");
-  while((stored_password = fgetc(the_file)) != EOF) {
+  while ((stored_password = fgetc(the_file)) != EOF) {
     putchar(stored_password);
   }
 
@@ -33,5 +33,5 @@ int main(int argc, char **argv) {
   b();
   putchar('\n');
 
-  return(0);
+  return (0);
 }

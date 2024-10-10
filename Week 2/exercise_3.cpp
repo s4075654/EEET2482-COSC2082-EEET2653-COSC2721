@@ -1,26 +1,20 @@
-#include <stdio.h>
-#include <iostream>
-#include <string>
 #include <iomanip>
+#include <iostream>
+#include <stdio.h>
+#include <string>
 
 void a(char *str) {
 
-  while(*str != '\0') {
+  while (*str != '\0') {
     putchar(*str);
     putchar(' ');
     ++str;
   }
 }
 
-void b() {
+void b() { std::cout << std::setw(9) << std::setfill('0') << 1.234; }
 
-  std::cout << std::setw(9) << std::setfill('0') << 1.234;
-}
-
-void c() {
-
-  std::cout << std::fixed << std::setprecision(2) << 1.234;
-}
+void c() { std::cout << std::fixed << std::setprecision(2) << 1.234; }
 
 void d() {
   size_t a_hexadecimal_value;
@@ -46,5 +40,5 @@ int main(int argc, char **argv) {
   d();
   putchar('\n');
 
-  return(0);
+  return (0);
 }

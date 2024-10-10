@@ -26,16 +26,17 @@ class CustomerAccount {
   long double buy() {
     long double the_total_expense = 0;
 
-    for(std::list<order>::iterator orders = list_of_orders.begin(); orders != list_of_orders.end(); ++orders) {
+    for (std::list<order>::iterator orders = list_of_orders.begin();
+         orders != list_of_orders.end(); ++orders) {
       ++(*orders).order_id;
       the_total_expense += (*orders).the_total_expense;
     }
     if (discount == gold_membership_account) {
 
-      return(the_total_expense * 95 / 100);
+      return (the_total_expense * 95 / 100);
     }
 
-    return(the_total_expense);
+    return (the_total_expense);
   }
   friend int main(int argc, char **argv);
 };
@@ -45,6 +46,6 @@ int main(int argc, char **argv) {
 
   CustomerAccount customer;
   printf("%Lf\n", customer.buy());
-  
-  return(0);
+
+  return (0);
 }
