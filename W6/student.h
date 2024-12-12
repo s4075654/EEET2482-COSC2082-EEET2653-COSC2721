@@ -9,6 +9,7 @@ class Student {
   std::string name;
 
   Student();
+
 public:
   ~Student();
 
@@ -16,4 +17,3 @@ public:
   friend void showInfoStudent(Student &stu);
   friend int main(int argc, char **argv);
 };
-
