@@ -3,10 +3,11 @@
 #include <string>
 
 class Student {
- private:
+private:
   ptrdiff_t score;
   std::string password;
- public:
+
+public:
   std::string name;
   Student();
   ptrdiff_t get_score();
@@ -16,4 +17,3 @@ class Student {
 
 void b();
 void c();
-
