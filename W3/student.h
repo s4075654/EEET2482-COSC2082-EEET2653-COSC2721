@@ -1,7 +1,6 @@
-#include <string>
+#pragma once
 
-#ifndef EXERCISES_HPP
-#define EXERCISES_HPP
+#include <string>
 
 class Student {
  private:
@@ -18,4 +17,3 @@ class Student {
 void b();
 void c();
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef EXERCISES_HPP
-#define EXERCISES_HPP
+#pragma once
 
 #include <string>
 
@@ -18,4 +17,3 @@ public:
   friend int main(int argc, char **argv);
 };
 
-#endif

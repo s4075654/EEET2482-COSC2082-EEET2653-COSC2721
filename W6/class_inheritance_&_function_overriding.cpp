@@ -1,6 +1,20 @@
-#include "exercises.hpp"
+#include "student.h"
 #include <stdio.h>
 #include <string>
+
+Student::Student() {
+
+  puts("themselves");
+}
+Student::~Student() {
+
+  puts("themselves");
+}
+
+const char *Student::toString() {
+
+  return((std::to_string(studentID) + name).data());
+}
 
 class Staff {
   friend class Tutor;
