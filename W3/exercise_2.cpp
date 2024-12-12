@@ -1,4 +1,4 @@
-#include "exercises.hpp"
+#include "exercises.h"
 #include <stdio.h>
 
 Student::Student() {
